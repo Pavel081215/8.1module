@@ -22,7 +22,7 @@
             <tr>
                 <td><c:out value="${letter.key}"/></td>
                 <td><c:out value="${letter.value}"/></td>
-                <td><input type="checkbox" name="id"></td>
+                <td><input type="checkbox" name="id" value="${letter.key}"></td>
             </tr>
         </c:forEach>
     </table>
@@ -34,7 +34,6 @@
     </p>
     <input type="submit" value="Add Task"/>
 
-    <p><a href="${addUrl}">Create new record</a></p>
 
 </form>
 </body>

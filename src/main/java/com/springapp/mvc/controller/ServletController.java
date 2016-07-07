@@ -8,13 +8,7 @@ import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 import java.io.IOException;
 import java.util.HashMap;
-import java.util.HashSet;
-import java.util.Map;
-import java.util.Set;
 
-/**
- * Created by Pavel on 06.07.2016.
- */
 public class ServletController extends HttpServlet {
 
     @Override
@@ -37,8 +31,8 @@ public class ServletController extends HttpServlet {
             session.setAttribute("Map", map1);
         }
 
-      /*  map =(HashMap<String, String>) session.getAttribute("Map");
-        String t = (String) session.getAttribute("in");
+        map =(HashMap<String, String>) session.getAttribute("Map");
+     /*   String t = (String) session.getAttribute("in");
         String temp = y + t;
         map.put(temp, "211111");
         session.setAttribute("in",temp);
@@ -50,6 +44,18 @@ public class ServletController extends HttpServlet {
             map.put(Task, Category);
             session.setAttribute("Map", map);
         }
+
+
+        String id = req.getParameter("id");
+        if(id != null){
+            map.remove(id);
+        }
+
+
+
+        session.setAttribute("Map", map);
+
+
         resp.sendRedirect("example.jsp");
 
 

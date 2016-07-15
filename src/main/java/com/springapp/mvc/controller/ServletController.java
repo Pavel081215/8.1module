@@ -14,27 +14,26 @@ public class ServletController extends HttpServlet {
 
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+
         HttpSession session = req.getSession();
         String Category = req.getParameter("Category");
         String Task = req.getParameter("Task");
-        String id = req.getParameter("id");
-        HashMap<String, String> map = (HashMap<String, String>) session.getAttribute("Map");
-        if (map == null) {
-            HashMap<String, String> map1 = new HashMap<String, String>();
-            session.setAttribute("Map", map1);
+        String idDelete = req.getParameter("idDelete");
+        HashMap<String, String> tasks = (HashMap<String, String>) session.getAttribute("Map");
+        if (tasks == null) {
+            HashMap<String, String> taskTemp = new HashMap<String, String>();
+            session.setAttribute("Map", taskTemp);
         }
-        map = (HashMap<String, String>) session.getAttribute("Map");
-        map.put(Task, Category);
-        for (Map.Entry<String, String> pair : map.entrySet()) {
-            String key = pair.getKey();
-            if (key == "") {
-                map.remove(key);
-            }
+        tasks = (HashMap<String, String>) session.getAttribute("Map");
+        if (Task != null) {
+            if (!Task.isEmpty())
+                tasks.put(Task, Category);
         }
-        if (id != null) {
-            map.remove(id);
+        if (idDelete != null) {
+            tasks.remove(idDelete);
         }
-        session.setAttribute("Map", map);
+
+        session.setAttribute("Map", tasks);
         resp.sendRedirect("example.jsp");
     }
 }

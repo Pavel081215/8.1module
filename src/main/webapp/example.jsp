@@ -22,7 +22,7 @@
             <tr>
                 <td><c:out value="${letter.key}"/></td>
                 <td><c:out value="${letter.value}"/></td>
-                <td><input type="checkbox" name="id" value="${letter.key}"></td>
+                <td><input type="checkbox" name="idDelete" value="${letter.key}"></td>
             </tr>
         </c:forEach>
     </table>

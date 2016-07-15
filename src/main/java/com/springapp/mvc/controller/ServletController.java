@@ -16,24 +16,24 @@ public class ServletController extends HttpServlet {
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 
         HttpSession session = req.getSession();
-        String Category = req.getParameter("Category");
-        String Task = req.getParameter("Task");
+        String category = req.getParameter("category");
+        String task = req.getParameter("task");
         String idDelete = req.getParameter("idDelete");
         HashMap<String, String> tasks = (HashMap<String, String>) session.getAttribute("Map");
         if (tasks == null) {
             HashMap<String, String> taskTemp = new HashMap<String, String>();
-            session.setAttribute("Map", taskTemp);
+            session.setAttribute("map", taskTemp);
         }
-        tasks = (HashMap<String, String>) session.getAttribute("Map");
-        if (Task != null) {
-            if (!Task.isEmpty())
-                tasks.put(Task, Category);
+        tasks = (HashMap<String, String>) session.getAttribute("map");
+        if (task != null) {
+            if (!task.isEmpty())
+                tasks.put(task, category);
         }
         if (idDelete != null) {
             tasks.remove(idDelete);
         }
 
-        session.setAttribute("Map", tasks);
+        session.setAttribute("map", tasks);
         resp.sendRedirect("example.jsp");
     }
 }

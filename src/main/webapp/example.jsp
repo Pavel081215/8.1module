@@ -29,8 +29,8 @@
     <input type="submit" value="Update Task"/>
 
     <p>
-        Task <input type="text" name="Task"/> <br/>
-        Category <input type="text" name="Category"/> <br/>
+        Task <input type="text" name="task"/> <br/>
+        Category <input type="text" name="category"/> <br/>
     </p>
     <input type="submit" value="Add Task"/>
 
